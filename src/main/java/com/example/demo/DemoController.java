@@ -13,4 +13,12 @@ public class DemoController {
     model.addAttribute("data", "방가워요");
     return "hello";
   }
+  @GetMapping("/about_detailed")
+  public String about() {
+    return "about_detailed";
+  }
+  @GetMapping("/index")
+  public String index() {
+    return "index";
+  }
 }
