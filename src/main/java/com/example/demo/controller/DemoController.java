@@ -56,5 +56,10 @@ public class DemoController {
       return "testdb"; // 템플릿 파일명
   }
 
+  // @GetMapping("/article_list")
+  // public String article_list() {
+  //   return "article_list";
+  // }
+
 }
 
