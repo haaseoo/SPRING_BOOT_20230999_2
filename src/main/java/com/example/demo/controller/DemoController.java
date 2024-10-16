@@ -1,30 +1,35 @@
 package com.example.demo.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import com.example.demo.model.service.TestService; // 최상단 서비스 클래스 연동 추가
 import com.example.demo.model.domain.TestDB;
 
-
+import java.util.List;
+import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class DemoController {
-  @GetMapping("/hello")
+
+  @Autowired
+  TestService testService;
+
+  @GetMapping("/hello") // get 전송방식
   public String hello(Model model) {
-    model.addAttribute("data", "방가워요");
-    return "hello";
+    model.addAttribute("data", "방가워요"); // model 설정
+    return "hello"; // hello.html 연결
   }
   @GetMapping("/about_detailed")
   public String about() {
     return "about_detailed";
   }
+
   @GetMapping("/index")
   public String index() {
-    return "index";
+    return "index";  // templates/index.html 파일을 렌더링
   }
+
   @GetMapping("/test1")
   public String thymeleaf_test1(Model model) {
     model.addAttribute("data1", "<h2>반갑습니다</h2>");
@@ -35,12 +40,21 @@ public class DemoController {
     model.addAttribute("para2", "002");
     return "thymeleaf_test1";
   }
+
   // @GetMapping("/testdb")
   // public String getAllTestDBs(Model model) {
-  //   TestDB test = testService.findByName("안하서");
-  //   model.addAttribute("data4", data);
-  //   System.out.println("데이터 출력 디버그: " + test);
-  //     return "testdb"();
+  //   Testdb test = testService.findByName("홍길동");
+  //   model.addAttribute("data4", test);
+  //   System.out.println("데이터 출력 디버그 : " + test);
+  //   return "testdb";
   // }
   
+  @GetMapping("/testdb")
+  public String getAllUsers(Model model) {
+      List<TestDB> users = testService.findAll(); // 모든 데이터 조회
+      model.addAttribute("users", users);  // 모델에 데이터 추가
+      return "testdb"; // 템플릿 파일명
+  }
+
 }
+

@@ -1,5 +1,6 @@
 package com.example.demo.model.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.domain.TestDB;
@@ -12,7 +13,13 @@ import lombok.RequiredArgsConstructor;
 public class TestService {
     @Autowired // 객체 주입 자동화
     private TestRepository testRepository;
+    
     public TestDB findByName(String name) {
       return (TestDB) testRepository.findByName(name);
+  }
+
+    // 모든 데이터 조회
+    public List<TestDB> findAll() {
+      return testRepository.findAll();
   }
 }
