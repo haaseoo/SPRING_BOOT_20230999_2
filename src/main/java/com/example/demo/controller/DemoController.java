@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.service.TestService; // 최상단 서비스 클래스 연동 추가
 import com.example.demo.model.domain.TestDB;
 
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,19 @@ public class DemoController {
     model.addAttribute("data", "방가워요"); // model 설정
     return "hello"; // hello.html 연결
   }
+
+  @GetMapping("/hello2") // get 전송방식
+  public String hello2(Model model) {
+    model.addAttribute("data1", "안하서님"); // model 설정
+    model.addAttribute("data2", "만나서 반갑습니다 !"); // model 설정
+    model.addAttribute("data3", "날씨는"); // model 설정
+    model.addAttribute("data4", "매우 좋습니다"); // model 설정
+
+    LocalDate today = LocalDate.now();
+    model.addAttribute("today", today.toString());
+    return "hello2"; // hello2.html 연결
+  }
+
   @GetMapping("/about_detailed")
   public String about() {
     return "about_detailed";

@@ -121,15 +121,19 @@
     loop: true,
   });
 
-  // Confirm Close function
-  function confirmClose() {
-    return confirm('창을 닫으시겠습니까?');
-  }
-
-  // 특정 버튼 클릭 시 confirmClose 실행
-  $('.btn-primary').on('click', function (event) {
-    if (!confirmClose()) {
-      event.preventDefault(); // 사용자가 취소하면 링크 이동 방지
+  // Confirm Close function - 특정 페이지에서만 실행
+  if ($('#aboutPage').length > 0) {
+    function confirmClose() {
+      return confirm('창을 닫으시겠습니까?');
     }
-  });
+
+    // 특정 버튼 클릭 시 confirmClose 실행
+    $('.btn-primary').on('click', function (event) {
+      if (confirmClose()) {
+        window.close(); // 창 닫기
+      } else {
+        event.preventDefault(); // 사용자가 취소하면 링크 이동 방지
+      }
+    });
+  }
 })(jQuery);
