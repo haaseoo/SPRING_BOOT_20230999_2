@@ -69,6 +69,8 @@
 - 버튼 테마 변경
  <p align="center"> <img width="500" alt="스크린샷 2024-10-20 17 41 03" src="https://github.com/user-attachments/assets/eb1f69a1-b647-440c-a0d6-ee090dc584d5"> </p>
 - 블로그 게시판 목록 hover
-https://github.com/user-attachments/assets/b239b0f5-ebba-48c0-87c7-71c47f7019d1
+
+https://github.com/user-attachments/assets/cf545d17-f6ad-4959-96d2-35a553b5a666
+
 
 
