@@ -44,11 +44,6 @@ public class DemoController {
     return "index";  // templates/index.html 파일을 렌더링
   }
 
-  @GetMapping("/article_error")
-  public String article_error() {
-    return "article_error";
-  }
-
   @GetMapping("/test1")
   public String thymeleaf_test1(Model model) {
     model.addAttribute("data1", "<h2>반갑습니다</h2>");
@@ -59,14 +54,6 @@ public class DemoController {
     model.addAttribute("para2", "002");
     return "thymeleaf_test1";
   }
-
-  // @GetMapping("/testdb")
-  // public String getAllTestDBs(Model model) {
-  //   Testdb test = testService.findByName("홍길동");
-  //   model.addAttribute("data4", test);
-  //   System.out.println("데이터 출력 디버그 : " + test);
-  //   return "testdb";
-  // }
   
   @GetMapping("/testdb")
   public String getAllUsers(Model model) {
@@ -74,12 +61,5 @@ public class DemoController {
       model.addAttribute("users", users);  // 모델에 데이터 추가
       return "testdb"; // 템플릿 파일명
   }
-
-
-  // @GetMapping("/article_list")
-  // public String article_list() {
-  //   return "article_list";
-  // }
-
 }
 

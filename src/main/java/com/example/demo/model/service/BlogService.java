@@ -34,6 +34,7 @@ public class BlogService {
       return blogRepository.findById(id);
     }
 
+    //수정
   public void update(Long id, AddArticleRequest request) {
     Optional<Article> optionalArticle = blogRepository.findById(id); // 단일 글 조회
     optionalArticle.ifPresent(article -> { // 값이 있으면
@@ -43,6 +44,7 @@ public class BlogService {
     });
   }
 
+  //삭제
   public void delete(Long id) {
     blogRepository.deleteById(id);
   }

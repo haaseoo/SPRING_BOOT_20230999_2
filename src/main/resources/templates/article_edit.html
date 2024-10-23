@@ -12,6 +12,7 @@
   <body>
     <div class="container">
       <h1 class="mt-5">블로그 게시판</h1>
+
       <!-- 게시글 추가 폼-->
       <div class="mt-4">
         <h2>게시글을 수정 합니다.</h2>
@@ -43,7 +44,13 @@
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">수정</button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            onclick="return confirm('정말로 수정하시겠습니까?');"
+          >
+            수정
+          </button>
         </form>
       </div>
 

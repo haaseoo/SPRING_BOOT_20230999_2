@@ -31,7 +31,7 @@ public class BlogController {
     @Autowired
     BlogService blogService; // 서비스 계층 의존성 주입
 
-    // 조회
+    // 게시글 조회
     @GetMapping("/article_list") // 게시판 링크 지정
     public String articleList(Model model) {
         List<Article> list = blogService.findAll(); // 게시판 리스트 조회
@@ -46,7 +46,7 @@ public class BlogController {
             model.addAttribute("article", list.get()); // 존재하면 Article 객체를 모델에 추가
         } else {
         // 처리할 로직 추가 (예: 오류 페이지로 리다이렉트, 예외 처리 등)
-            return "redirect:/article_error"; // 오류 처리 페이지로 연결(이름 수정됨)
+            return "/error_page/article_error"; // 오류 처리 페이지로 연결(이름 수정됨)
         }
     return "article_edit"; // .HTML 연결
     }
@@ -58,6 +58,7 @@ public class BlogController {
             return "redirect:/article_list"; // 글 수정 이후 .html 연결
     }
 
+    //삭제
     @DeleteMapping("/api/article_delete/{id}")
         public String deleteArticle(@PathVariable Long id) {
             blogService.delete(id);
@@ -80,7 +81,7 @@ public class BlogController {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public String handleTypeMismatchException(MethodArgumentTypeMismatchException ex, Model model) {
         model.addAttribute("errorMessage", "잘못된 요청입니다. ID는 숫자여야 합니다.");
-        return "error_page/article2_error"; // 오류 페이지로 이동
+        return "error_page/article_error2"; // 오류 페이지로 이동
     }
 
 
